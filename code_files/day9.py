@@ -56,7 +56,6 @@ class AdventDay9:
 
 if __name__ == '__main__':
     day9 = AdventDay9()
-    print(day9.data)
     day9.largest_rectangle()
     day9.largest_inner_rectangle()
     print(day9.part1, day9.part2)

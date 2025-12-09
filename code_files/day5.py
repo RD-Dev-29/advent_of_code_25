@@ -21,12 +21,20 @@ class AdventDay5:
 
     def process_queries(self):
         for query in self.queries:
-            for r in self.fresh_ranges:
-                if r[0] <= query <= r[1]:
-                    self.part1 += 1
-                    break
-                if query < r[0]:
-                    break
+            self.part1 += int(self._binary_search(query))
+
+    def _binary_search(self, target):
+        low, high = 0, len(self.fresh_ranges) - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if self.fresh_ranges[mid][0] <= target and \
+                    target <= self.fresh_ranges[mid][1]:
+                return True
+            elif target < self.fresh_ranges[mid][0]:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False
 
     def count_total_fresh(self):
         total = 0
